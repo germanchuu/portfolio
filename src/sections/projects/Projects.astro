@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import portraitImage from "@/assets/images/daniel_all.webp";
+import { InventoryGrid } from "./components/Inventory";
+---
+
+<section id="projects" class="bg-secondary/10">
+  <div
+    class="bg-background relative flex items-center justify-center px-4 py-2"
+  >
+    <h1 class="title-text flex w-full font-mono text-2xl uppercase opacity-50">
+      Projects
+    </h1>
+
+    <div
+      class="via-accent/30 absolute top-0 right-0 left-0 h-px bg-linear-to-r from-transparent to-transparent"
+    >
+    </div>
+    <div
+      class="via-accent/30 absolute right-0 bottom-0 left-0 h-px bg-linear-to-r from-transparent to-transparent"
+    >
+    </div>
+  </div>
+
+  <div class="container flex gap-5">
+    <div
+      class="bg-card border-primary/30 relative w-[250px] rounded-lg border backdrop-blur-sm"
+    >
+      <div
+        class="hero-scanlines pointer-events-none absolute inset-0 opacity-[0.015]"/>
+
+      <div class="m-5">
+        <Image
+          class="w-full rounded-lg object-cover object-top"
+          src={portraitImage}
+          alt="Retrato de Daniel Sánchez"
+        />
+      </div>
+    </div>
+
+    <InventoryGrid client:load />
+  </div>
+</section>
+
+<style>  
+  .title-text::before {
+    content: "";
+    margin-right: 30px;
+    height: 0.1em;
+    align-self: center;
+    flex-grow: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0px 5px,
+      var(--color-foreground) 5px 15px
+    );
+  }
+
+  .title-text::after {
+    content: "";
+    margin-left: 30px;
+    height: 0.1em;
+    align-self: center;
+    flex-grow: 1;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--color-foreground) 0% 100%
+    );
+  }
+</style>
