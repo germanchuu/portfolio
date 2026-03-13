@@ -1,0 +1,71 @@
+.typing-caret.is-typing::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 0.25ch;
+  opacity: 0.9;
+  animation: typing-caret-blink 0.5s step-end infinite;
+}
+
+@keyframes typing-caret-blink {
+  0% {
+    opacity: 1;
+    color: var(--color-primary);
+  }
+  50% {
+    opacity: 0.3;
+    color: var(--color-accent);
+  }
+  100% {
+    opacity: 1;
+    color: var(--color-primary);
+  }
+}
+
+.glow-primary {
+  background:
+    radial-gradient(
+      circle at 50% 65%,
+      rgba(25, 212, 229, 0.75) 0%,
+      rgba(25, 212, 229, 0.35) 35%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(25, 212, 229, 0.35) 0%,
+      transparent 60%
+    );
+}
+
+.hero-grid-pattern {
+  background:
+    linear-gradient(var(--color-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-primary) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px 2px,
+    var(--color-primary) 2px 4px
+  );
+}
+
+.hero-scanline-traveler {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  animation: hero-scanline-travel 5s infinite linear;
+}
+
+@keyframes hero-scanline-travel {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}

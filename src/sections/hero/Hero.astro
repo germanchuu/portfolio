@@ -1,0 +1,30 @@
+---
+import "./hero.css";
+import HeroScrollIndicator from "./components/HeroScrollIndicator.astro";
+import HeroContent from "./components/HeroContent.astro";
+import HeroPortrait from "./components/HeroPortrait.astro";
+---
+
+<section id="hero" class="relative flex min-h-screen">
+  <div
+    class="hero-grid-pattern pointer-events-none absolute inset-0 opacity-[0.022]"
+  >
+  </div>
+  <div
+    class="hero-scanlines pointer-events-none absolute inset-0 opacity-[0.015]"
+  >
+  </div>
+  <div
+    class="hero-scanline-traveler pointer-events-none absolute inset-x-0 top-0 h-[2px] opacity-20"
+  >
+  </div>
+
+  <HeroScrollIndicator />
+
+  <div class="container flex w-full items-center justify-between">
+    <HeroContent />
+    <HeroPortrait />
+  </div>
+</section>
+
+<script src="/src/sections/hero/hero.client.ts" type="module"></script>
