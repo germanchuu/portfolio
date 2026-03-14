@@ -1,9 +1,59 @@
-export const CELLS_COLS = 9;
+import type React from "react";
+import InventoryHeader from "./InventoryHeader";
+import InventoryVisualGridCells from "./InventoryVisualGridCells";
+
+export const CELLS_COLS = 10;
 export const CELLS_ROWS = 10;
 export const CELLS_SIZE = 95;
 
 export function InventoryGrid() {
-  const totalCells = CELLS_COLS * CELLS_ROWS;
+  let draggingItem: HTMLElement | null = null;
+
+  function handleDragStart(
+    e: React.DragEvent,
+    data: { id: string; sizeX: number; sizeY: number },
+  ) {
+    draggingItem = e.currentTarget as HTMLElement;
+    e.dataTransfer.setData(
+      "application/x-inventory-card",
+      JSON.stringify(data),
+    );
+
+    const img = new Image();
+    img.src = "data:image/gif;base64,s=";
+
+    e.dataTransfer.setDragImage(img, 0, 0);
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    const isInventoryItem = e.dataTransfer.types.includes(
+      "application/x-inventory-card",
+    );
+    if (!isInventoryItem || !draggingItem) return;
+
+    e.preventDefault();
+    const container = e.currentTarget;
+
+    const rect = container.getBoundingClientRect();
+
+    const x = e.clientX - rect.left + container.scrollLeft;
+    const y = e.clientY - rect.top + container.scrollTop;
+
+    const row = Math.floor(y / CELLS_SIZE);
+    const col = Math.floor(x / CELLS_SIZE);
+
+    const itemJson = e.dataTransfer.getData("application/x-inventory-card");
+    const item = JSON.parse(itemJson);
+
+    if (col + item.sizeX <= CELLS_COLS) {
+      draggingItem.style.gridColumn = `${col + 1} / span ${item.sizeX}`;
+    }
+    if (row + item.sizeY <= CELLS_ROWS) {
+      draggingItem.style.gridRow = `${row + 1} / span ${item.sizeY}`;
+    }
+
+    console.log({ x, y, row, col });
+  }
 
   return (
     <div className="bg-card border-primary/30 relative min-w-0 flex-1 rounded-lg border backdrop-blur-sm">
@@ -12,42 +62,64 @@ export function InventoryGrid() {
         aria-hidden
       />
 
-      <div className="text-muted-foreground relative z-10 flex justify-between p-4 font-mono text-sm">
-        <h3 className="tracking-widest uppercase">Inventory · 0 Items</h3>
-        <div className="flex items-center gap-10">
-          <span className="text-primary/50">⟐ Drag to order</span>
-          <span>
-            {CELLS_COLS} x {CELLS_ROWS} grid
-          </span>
-        </div>
-      </div>
+      <InventoryHeader numItems={0} colums={CELLS_COLS} rows={CELLS_ROWS} />
 
-      <div className="relative h-full w-full">
+      <div className="relative">
+        <InventoryVisualGridCells
+          colums={CELLS_COLS}
+          rows={CELLS_ROWS}
+          cellSize={CELLS_SIZE}
+        />
+
         <div
-          className="grid min-w-0 place-items-center justify-center overflow-auto pb-5"
+          onDragOver={handleDragOver}
+          className="absolute inset-0 grid place-items-center justify-center overflow-auto"
           style={{
             gridTemplateColumns: `repeat(${CELLS_COLS}, ${CELLS_SIZE}px)`,
             gridTemplateRows: `repeat(${CELLS_ROWS}, ${CELLS_SIZE}px)`,
           }}
         >
-          {Array.from({ length: totalCells }).map((_, idx) => (
-            <div
-              key={idx}
-              className="border-border/30 bg-muted/20 rounded border"
-              style={{
-                width: `${CELLS_SIZE - 10}px`,
-                height: `${CELLS_SIZE - 10}px`,
-              }}
-            />
-          ))}
-        </div>
+          <article
+            draggable
+            onDragStart={(e) =>
+              handleDragStart(e, { id: "item_1", sizeX: 3, sizeY: 3 })
+            }
+            className="card relative h-full w-full p-[5px]"
+            style={{
+              gridColumn: "1 / span 3",
+              gridRow: "2 / span 3",
+            }}
+          >
+            <div className="bg-primary/30 h-full w-full rounded" />
+          </article>
 
-        <div className="duration-fast absolute top-0 left-5 h-[285px] w-[190px] bg-green-400/0 p-[5px] transition-all hover:scale-150">
-          <div className="bg-primary/20 h-full w-full rounded"></div>
-        </div>
+          <article
+            draggable
+            onDragStart={(e) =>
+              handleDragStart(e, { id: "item_1", sizeX: 3, sizeY: 4 })
+            }
+            className="card relative h-full w-full p-[5px]"
+            style={{
+              gridColumn: "7 / span 3",
+              gridRow: "1 / span 4",
+            }}
+          >
+            <div className="h-full w-full rounded bg-red-500/30" />
+          </article>
 
-        <div className="absolute top-0 left-[210px] h-[190px] w-[285px] bg-green-400/0 p-[5px]">
-          <div className="bg-primary/20 duration-fast h-full w-full rounded transition-all hover:scale-200"></div>
+          <article
+            draggable
+            onDragStart={(e) =>
+              handleDragStart(e, { id: "item_2", sizeX: 4, sizeY: 3 })
+            }
+            className="card relative h-full w-full p-[5px]"
+            style={{
+              gridColumn: "2 / span 4",
+              gridRow: "6 / span 3",
+            }}
+          >
+            <div className="h-full w-full rounded bg-green-500/30" />
+          </article>
         </div>
       </div>
     </div>
