@@ -1,59 +1,46 @@
-## Portfolio – Germán Daniel Sánchez Lanza
+# Astro Starter Kit: Basics
 
-Personal portfolio focused on **Fullstack** and **Game Development**, built with a sci‑fi / terminal aesthetic, subtle animations, and a strong emphasis on typography and micro‑interactions.
+```sh
+npm create astro@latest -- --template basics
+```
 
-### Tech stack
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-- **Astro 5**: hybrid rendering (islands) for maximum performance.
-- **Tailwind CSS v4**: design system defined via tokens in `theme.css`.
-- **React**: interactive islands such as the projects inventory.
-- **Lucide Icons**: lightweight, consistent icon set.
+## 🚀 Project Structure
 
-### Project architecture
+Inside of your Astro project, you'll see the following folders and files:
 
-- **Global layout**  
-  - `layouts/Layout.astro`: defines `<html>`, `<body>`, navbar, and `<main>`.
-  - `sections/NavBar.astro`: fixed header with primary navigation.
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-- **Hero**  
-  - `sections/hero/Hero.astro`: main hero section with:
-    - Animated background (`hero-grid-pattern`, `hero-scanlines`, `hero-scanline-traveler`).
-    - Title with typing effect and blinking caret using client-side JS.
-    - GitHub and LinkedIn call‑to‑action buttons.
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-- **Projects**  
-  - `sections/projects/Projects.astro`: projects section featuring:
-    - Author showcase card.
-    - **Game-like inventory grid** implemented as a React island.
-  - `sections/projects/components/Inventory/InventoryGrid.tsx`: configurable `cols × rows` grid with slots and overlays for items.
+## 🧞 Commands
 
-- **Styling and theme**  
-  - `styles/theme.css`: design tokens (`--color-*`, `--space-*`, `--radius-*`, etc.).
-  - `styles/global.css`: Tailwind import, local fonts, and base layout (`body`, `.container`).
-  - `tailwind.config.ts`: maps CSS variables to Tailwind utilities (`bg-background`, `text-primary`, `max-w-container`, etc.).
+All commands are run from the root of the project, from a terminal:
 
-### Development scripts
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-All commands are run from the project root:
+## 👀 Want to learn more?
 
-- **Install dependencies**
-  - `npm install`
-- **Development**
-  - `npm run dev` — dev server at `http://localhost:4321`
-- **Production build**
-  - `npm run build`
-- **Production preview**
-  - `npm run preview`
-
-### Conventions & design
-
-- **Tokens first**: any new color/spacing/typography should start in `theme.css` and be exposed through Tailwind when needed.
-- **Section‑based components**: each major page block lives in `src/sections/...` and delegates to smaller `components` when appropriate.
-- **Targeted interactivity**: React is only used where it adds real value (inventory, future widgets), keeping the rest in Astro for minimal bundle size and faster loads.
-
-### Next steps (ideas)
-
-- Add real project cards into the inventory (with metadata and states).
-- Integrate additional motion via `tailwindcss-motion`.
-- Light internationalization (EN/ES) for main content.
-
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
