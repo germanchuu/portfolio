@@ -85,3 +85,10 @@ body {
   padding-inline: var(--space-md);
   padding-block: var(--space-lg);
 }
+
+.container-large {
+  max-width: var(--container-max-large);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+  padding-block: var(--space-lg);
+}
