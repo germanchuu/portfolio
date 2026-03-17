@@ -1,0 +1,55 @@
+--- 
+
+---
+
+<section id="about" >
+    <div
+    class="bg-background relative flex items-center justify-center px-4 py-2"
+    >
+    <h1 class="title-text flex w-full font-mono text-2xl uppercase opacity-50">
+      About
+    </h1>
+
+    <div
+      class="via-accent/30 absolute top-0 right-0 left-0 h-px bg-linear-to-r from-transparent to-transparent"
+    >
+    </div>
+    <div
+      class="via-accent/30 absolute right-0 bottom-0 left-0 h-px bg-linear-to-r from-transparent to-transparent"
+    >
+    </div>
+  </div>
+
+  <div class="container bg-card rounded-lg border border-primary/30 m-8 space-y-4 text-card-foreground leading-relaxed">
+    <p class="px-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus at tenetur minus, beatae eaque quia earum sapiente corporis vero. Sunt delectus aspernatur doloribus commodi doloremque ad iste, repellat architecto fuga? Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+    <p class="px-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus at tenetur minus, beatae eaque quia earum sapiente corporis vero. Sunt delectus aspernatur doloribus commodi doloremque ad iste, repellat architecto fuga? Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+    <p class="px-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus at tenetur minus, beatae eaque quia earum sapiente corporis vero. Sunt delectus aspernatur doloribus commodi doloremque ad iste, repellat architecto fuga? Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+  </div>
+</section>
+
+<style>
+    .title-text::before {
+      content: "";
+      margin-right: 30px;
+      height: 0.1em;
+      align-self: center;
+      flex-grow: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px 5px,
+        var(--color-foreground) 5px 15px
+      );
+    }
+  
+    .title-text::after {
+      content: "";
+      margin-left: 30px;
+      height: 0.1em;
+      align-self: center;
+      flex-grow: 1;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--color-foreground) 0% 100%
+      );
+    }
+  </style>
