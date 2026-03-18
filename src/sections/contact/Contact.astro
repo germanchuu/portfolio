@@ -4,20 +4,35 @@ import { Send } from "@lucide/astro";
 ---
 
 <section id="contact" class="bg-secondary/10 py-24">
-  <SectionHeader title="Contact" subtitle="Send Me A Message" /> 
+  <SectionHeader title="Contact" subtitle="Send Me A Message" />
 
-  <div class="max-w-4xl mx-auto">
-      <form action="POST" class="flex flex-col space-y-4">
-          <label for="email" class="w-full">
-              <input name="email" id="email" type="email" placeholder="Your Email..." class="w-full bg-muted/50 rounded-sm border border-border/50 px-4 py-2 font-heading ">
-            </label>
-            <label for="message" class="w-full">
-                <textarea name="message" id="message" placeholder="Your Message..." rows={5} class="bg-muted/50 w-full rounded-sm border border-border/50 px-4 py-2 font-heading resize-none"></textarea>
-            </label>
-            <button class="flex gap-2 font-heading tracking-wider uppercase text-sm w-full bg-primary text-primary-foreground rounded-sm py-3 items-center justify-center font-medium cursor-pointer hover:bg-primary/90 duration-normal drop-shadow-primary/5 drop-shadow-2xl transition-all" disabled>
-                <Send class="h-4 w-4" />
-                Send Message
-            </button>
-        </form>
-    </div>
+  <div class="mx-auto max-w-4xl">
+    <form action="POST" class="flex flex-col space-y-4">
+      <label for="email" class="w-full">
+        <input
+          name="email"
+          id="email"
+          type="email"
+          placeholder="Your Email..."
+          class="bg-muted/50 border-border/50 font-heading w-full rounded-sm border px-4 py-2"
+        />
+      </label>
+      <label for="message" class="w-full">
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Your Message..."
+          rows={5}
+          class="bg-muted/50 border-border/50 font-heading w-full resize-none rounded-sm border px-4 py-2"
+        ></textarea>
+      </label>
+      <button
+        class="font-heading bg-primary text-primary-foreground hover:bg-primary/90 duration-normal drop-shadow-primary/5 flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm py-3 text-sm font-medium tracking-wider uppercase drop-shadow-2xl transition-all"
+        disabled
+      >
+        <Send class="h-4 w-4" />
+        Send Message
+      </button>
+    </form>
+  </div>
 </section>
