@@ -52,6 +52,8 @@ const config: Config = {
         sm: "var(--shadow-sm)",
         md: "var(--shadow-md)",
         lg: "var(--shadow-lg)",
+        "glow-cyan":
+          "0 0 15px hsl(var(--color-primary) / 0.2), inset 0 0 15px hsl(var(--color-primary) / 0.05)",
       },
       maxWidth: {
         container: "var(--container-max)",
