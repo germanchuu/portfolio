@@ -2,25 +2,11 @@
 import { Image } from "astro:assets";
 import portraitImage from "@/assets/images/me/daniel_all.webp";
 import { InventoryGrid } from "@/sections/projects/components/Inventory/InventoryGrid";
+import SectionHeader from "@/components/SectionHeader.astro";
 ---
 
-<section id="projects" class="bg-secondary/10">
-  <div
-    class="bg-background relative flex items-center justify-center px-4 py-2"
-  >
-    <h1 class="title-text flex w-full font-mono text-2xl uppercase opacity-50">
-      Projects
-    </h1>
-
-    <div
-      class="via-accent/30 absolute top-0 right-0 left-0 h-px bg-linear-to-r from-transparent to-transparent"
-    >
-    </div>
-    <div
-      class="via-accent/30 absolute right-0 bottom-0 left-0 h-px bg-linear-to-r from-transparent to-transparent"
-    >
-    </div>
-  </div>
+<section id="projects" class="bg-secondary/10 py-24">
+  <SectionHeader title="Projects" subtitle="Inventory"/>
 
   <div class="container-large flex gap-5">
     <div
@@ -43,30 +29,3 @@ import { InventoryGrid } from "@/sections/projects/components/Inventory/Inventor
     <InventoryGrid client:load />
   </div>
 </section>
-
-<style>
-  .title-text::before {
-    content: "";
-    margin-right: 30px;
-    height: 0.1em;
-    align-self: center;
-    flex-grow: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent 0px 5px,
-      var(--color-foreground) 5px 15px
-    );
-  }
-
-  .title-text::after {
-    content: "";
-    margin-left: 30px;
-    height: 0.1em;
-    align-self: center;
-    flex-grow: 1;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--color-foreground) 0% 100%
-    );
-  }
-</style>
