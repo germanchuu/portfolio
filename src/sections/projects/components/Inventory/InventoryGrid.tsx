@@ -153,6 +153,7 @@ export function InventoryGrid() {
           {projects.map((project) => {
             return (
               <InventoryItemCard
+                key={project.id}
                 project={project}
                 mouseDown={(e) =>
                   handleMouseDown(e, project.id, project.metadata)
