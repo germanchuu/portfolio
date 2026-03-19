@@ -15,11 +15,8 @@ export const CELLS_SIZE = 95;
 export function InventoryGrid() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [projects, setProjects] = useState<Project[]>(Projects);
-  const { handleMouseDown, dragState, selectedProject } = useInventoryDrag(
-    projects,
-    setProjects,
-    containerRef,
-  );
+  const { handleMouseDown, dragState, selectedProject, invalidPlacement } =
+    useInventoryDrag(projects, setProjects, containerRef);
 
   return (
     <div className="bg-card border-primary/30 relative min-w-0 flex-1 rounded-lg border backdrop-blur-sm">
@@ -55,7 +52,10 @@ export function InventoryGrid() {
             mouseDown={handleMouseDown}
           />
 
-          <InventoryDropPreview dragState={dragState} />
+          <InventoryDropPreview
+            dragState={dragState}
+            invalid={invalidPlacement}
+          />
         </div>
 
         <InventoryDragOverlay

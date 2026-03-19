@@ -11,6 +11,7 @@ import {
   CELLS_ROWS,
   CELLS_SIZE,
 } from "../components/Inventory/InventoryGrid";
+import { isOverlapping } from "@/sections/projects/utils/grid";
 
 export type DragState = {
   id: string;
@@ -91,6 +92,15 @@ export const useInventoryDrag = (
   function finishDrag() {
     if (!dragState) return;
 
+    const isInvalid = projects.some(
+      (p) => p.id !== dragState.id && isOverlapping(dragState, p),
+    );
+
+    if (isInvalid) {
+      setDragState(null);
+      return;
+    }
+
     setProjects((prev) =>
       prev.map((project) =>
         project.id === dragState.id
@@ -135,11 +145,16 @@ export const useInventoryDrag = (
   const selectedProject =
     dragState && projects.find((p) => p.id === dragState.id);
 
+  const invalidPlacement =
+    dragState &&
+    projects.some((p) => p.id !== dragState.id && isOverlapping(dragState, p));
+
   return {
     handleMouseDown,
     handleMouseMove,
     finishDrag,
     dragState,
     selectedProject,
+    invalidPlacement,
   };
 };
