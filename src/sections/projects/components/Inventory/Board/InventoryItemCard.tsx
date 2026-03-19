@@ -1,14 +1,11 @@
 import React from "react";
-import type { Project, InventoryItem } from "@/sections/projects/data/projects";
+import type { Project } from "@/sections/projects/data/projects";
+import { type DragState } from "@/sections/projects/hooks/useInventoryDrag";
 
 type InventoryItemCardProps = {
   project: Project;
-  mouseDown: (
-    e: React.MouseEvent<HTMLElement>,
-    id: string,
-    item: InventoryItem,
-  ) => void;
-  dragState: { id: string; col: number; row: number };
+  mouseDown: (e: React.MouseEvent<HTMLElement>, project: Project) => void;
+  dragState: DragState | null;
 };
 
 export default function InventoryItemCard({
@@ -16,21 +13,21 @@ export default function InventoryItemCard({
   mouseDown,
   dragState,
 }: InventoryItemCardProps) {
-  const isDragging = dragState.id === project.id;
+  const isDragging = dragState?.id === project.id;
   const col = isDragging ? dragState.col : project.metadata.col;
   const row = isDragging ? dragState.row : project.metadata.row;
 
   return (
     <article
       key={project.id}
-      onMouseDown={(e) => mouseDown(e, project.id, project.metadata)}
+      onMouseDown={(e) => mouseDown(e, project)}
       className={`relative h-full w-full p-[5px] ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
       style={{
         gridColumn: `${col + 1} / span ${project.metadata.sizeX}`,
         gridRow: `${row + 1} / span ${project.metadata.sizeY}`,
       }}
     >
-      <div className="relative h-full rounded bg-red-500/30">
+      <div className="relative h-full rounded">
         <img
           className="h-full w-full rounded object-cover object-top"
           src={project.image.src}
