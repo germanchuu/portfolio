@@ -1,4 +1,5 @@
 ---
+import Footer from "@/sections/Footer.astro";
 import Navbar from "@/sections/Navbar.astro";
 import "@/styles/global.css";
 ---
@@ -21,5 +22,9 @@ import "@/styles/global.css";
     <main>
       <slot />
     </main>
+
+    <footer>
+      <Footer/>
+    </footer>
   </body>
 </html>
