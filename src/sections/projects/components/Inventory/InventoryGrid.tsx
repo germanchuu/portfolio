@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import InventoryHeader from "./InventoryHeader";
 import type { Project } from "@/sections/projects/data/projects";
 import { Projects } from "@/sections/projects/data/projects";
