@@ -8,6 +8,15 @@ import { Send } from "@lucide/astro";
 
   <div class="mx-auto max-w-4xl">
     <form action="POST" class="flex flex-col space-y-4">
+      <label for="name" class="w-full">
+        <input
+          name="name"
+          id="name"
+          type="text"
+          placeholder="Your Name..."
+          class="bg-muted/50 border-border/50 font-heading w-full rounded-sm border px-4 py-2"
+        />
+      </label>
       <label for="email" class="w-full">
         <input
           name="email"
