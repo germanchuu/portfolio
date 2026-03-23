@@ -1,5 +1,8 @@
 import Loscos from "@/assets/images/projects/Loscos.webp";
 import Nogueras from "@/assets/images/projects/Nogueras.webp";
+import IDES from "@/assets/images/projects/IDES.webp";
+import Granja_Avicola from "@/assets/images/projects/Granja_Avicola.webp";
+import Plataforma from "@/assets/images/projects/Plataforma.webp";
 
 export type Project = {
   id: string;
@@ -60,7 +63,7 @@ export const Projects: Project[] = [
     metadata: {
       sizeX: sizes.horizontal.x,
       sizeY: sizes.horizontal.y,
-      col: 3,
+      col: 2,
       row: 3,
     },
   },
@@ -68,7 +71,7 @@ export const Projects: Project[] = [
     id: "promotoras_ddhh",
     title: "Promotoras DDHH",
     description: "Página web estática para el pueblo de Nogueras.",
-    image: Loscos,
+    image: Plataforma,
     stack: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Azure", "AWS"],
     metadata: {
       sizeX: sizes.horizontal.x,
@@ -81,7 +84,7 @@ export const Projects: Project[] = [
     id: "granja_avicola_san_vicente_de_paul",
     title: "Granja Avícola",
     description: "Página web estática para el pueblo de Nogueras.",
-    image: Nogueras,
+    image: Granja_Avicola,
     stack: ["Claude Code", "React Native", "Expo", "TypeScript", "Firebase"],
     metadata: {
       sizeX: sizes.vertical.x,
@@ -94,12 +97,12 @@ export const Projects: Project[] = [
     id: "ides",
     title: "IDES",
     description: "Página web estática para el pueblo de Nogueras.",
-    image: Nogueras,
+    image: IDES,
     stack: ["Unity", "C#"],
     metadata: {
-      sizeX: sizes.square.x,
-      sizeY: sizes.square.y,
-      col: 7,
+      sizeX: sizes.horizontal.x,
+      sizeY: sizes.horizontal.y,
+      col: 6,
       row: 1,
     },
   },
